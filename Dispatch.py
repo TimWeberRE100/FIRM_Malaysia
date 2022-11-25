@@ -17,9 +17,6 @@ def Flexible(instance):
 
     S = Solution(x)
 
-    # startidx = int((24 / resolution) * (dt.datetime(year, 1, 1) - dt.datetime(firstyear, 1, 1)).days)
-    # endidx = int((24 / resolution) * (dt.datetime(year+1, 1, 1) - dt.datetime(firstyear, 1, 1)).days)
-
     startidx = int((24 / resolution) * (year - firstyear) * 365)
     endidx = int((24 / resolution) * (year+1 - firstyear) * 365)
 
@@ -49,7 +46,7 @@ def Analysis(x):
     pool.terminate()
 
     Flex = np.concatenate(Dispresult)
-    np.savetxt('Results/Dispatch_Flexible{}{}.csv'.format(node, percapita), Flex, fmt='%f', delimiter=',', newline='\n', header='Flexible energy resources')
+    np.savetxt('Results/Dispatch_Flexible{}{}.csv'.format(scenario, percapita), Flex, fmt='%f', delimiter=',', newline='\n', header='Flexible energy resources')
 
     endtime = dt.datetime.now()
     print('Dispatch took', endtime - starttime)
